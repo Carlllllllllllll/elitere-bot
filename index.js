@@ -21,6 +21,8 @@ const { startMonitoring } = require('./utils/websiteMonitor');
 const { Document, Paragraph, TextRun, AlignmentType, Packer } = require('docx');
 const fs = require('fs');
 const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3000; 
 
 connectDB();
 
@@ -277,5 +279,13 @@ async function registerCommands() {
     await client.application.commands.set(commands);
     console.log('Commands registered successfully');
 }
+
+app.get('/', (req, res) => {
+    res.send('Discord bot is running');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 client.login(process.env.DISCORD_TOKEN).then(registerCommands);
