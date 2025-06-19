@@ -1,7 +1,6 @@
 const { Document, Paragraph, TextRun, AlignmentType, Packer, ImageRun, HeadingLevel } = require('docx');
 const fs = require('fs');
 const path = require('path');
-const logger = require('./logger');
 const QRCode = require('qrcode');
 
 class OrderProcessor {
